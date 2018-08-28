@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns="">
+<head>
+    <title>SAP系统连接系统</title>
+    <link href="/jslib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/jslib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="/jslib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/jslib/toastr/toastr.min.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="/jslib/easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/jslib/easyui/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="button/gh-buttons.css"/>
+    <link rel="stylesheet" type="text/css" href="button/prettify.css"/>
+    <script src="/jslib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="button/prettify.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/css/checkbox.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/upload.css">
+
+
+    <script type="text/javascript" src="/jslib/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/jslib/easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div ng-app="client" ng-controller="clientController">
+    <center>
+        <h1>CourseInfo Excel 上載</h1>
+        <div>
+            <font size="5" color="#00008b">SAP系统连接系统
+            </font>
+        </div>
+    </center>
+    <div class="col-md-4 col-md-offset-4">
+        <font size="4" color="#00008b">上載記錄
+        </font>
+        <div class="input-group">
+      <span class="input-group-btn">
+            <div class="btn btn-default browse-button">
+                <span class="browse-button-text">
+                <i class="fa fa-folder-open"></i> Browse</span>
+        <input type="file" accept=".xlsx" name="attachment"
+               product-excel-upload="" ng-model="productExcel"/>
+    </div>
+    <button type="button" class="btn btn-default clear-button" style="display:none;">
+              <span class="fa fa-times"></span> Clear
+            </button>
+            </span>
+
+            <input type="text" class="form-control filename" disabled="disabled"
+                   placeholder="Please click on browse button and select a Excel file"
+                   product-excel-upload ng-model="productExcel"/>
+            <span class="input-group-btn">
+            <button class="btn btn-primary upload-button" type="button"
+                    ng-click="uploadProductExcel()">
+                <i class="fa fa-upload"></i>
+                Upload
+              </button>
+          </span>
+        </div>
+        <hr/>
+        <p>There are <b>{{products.length}} courseInfos</b> on Server.</p>
+        <font size="4" color="#00008b">下載記錄</font><br/>
+        <botton type=button value=meizz
+                style="width:100px; height: 40px; padding: 10px 30px 10px 0px"
+                href="#" class="button icon log" onclick="downloadInfofile();">
+            <font size="3px">記錄導出</font>
+        </botton>
+        <hr style="height:2px;border:none;border-top:2px dotted #185598;"/>
+        <center>
+            <botton type=button value=meizz
+                    style="width:100px; height: 40px; padding: 10px 30px 10px 0px"
+                    href="#" class="button icon log" onclick="backtoCourse();">
+                <font size="3px">課程資料</font>
+            </botton>
+            <button type="button" value="meizz"
+                    style="width:100px; height: 40px; padding: 10px 30px 10px 0px"
+                    href="#" class="button icon log" onclick="jumptoDataControl()">
+                <font size="3px">數據源</font>
+            </button>
+        </center>
+    </div>
+</div>
+
+
+<script src="/webjars/sockjs-client/0.3.4/sockjs.min.js"></script>
+
+<script src="/jslib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/jslib/angular/angular.min.js" type="text/javascript"></script>
+<script src="/jslib/angular-route/angular-route.min.js" type="text/javascript"></script>
+<script src="/jslib/angular-ui-bootstrap/ui-bootstrap.js" type="text/javascript"></script>
+<script src="/jslib/angular-ui-bootstrap/ui-bootstrap-tpls.js" type="text/javascript"></script>
+<script src="/jslib/angular-sanitize/angular-sanitize.min.js" type="text/javascript"></script>
+
+<script src="/jslib/toastr/toastr.min.js" type="text/javascript"></script>
+<script src="/jslib/stompjs/stomp.js" type="text/javascript"></script>
+
+<script src="/js/client-module.js" type="text/javascript"></script>
+<script src="/js/message-service.js" type="text/javascript"></script>
+<script src="/js/upload-service.js" type="text/javascript"></script>
+<script src="/js/product-service.js" type="text/javascript"></script>
+<script src="/js/socket-service.js" type="text/javascript"></script>
+<script src="/js/client-controller.js" type="text/javascript"></script>
+<script src="/courseJsp/download.js" type="text/javascript"></script>
+<script src="/uploadjs/uploadfile.js" type="text/javascript"></script>
+
+</body>
+</html>
